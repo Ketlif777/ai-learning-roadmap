@@ -30,9 +30,9 @@
 - 当前阶段：阶段 0
 - 当前周次：第 1 周
 - 当前主题：计算机基础与 GitHub
-- 已完成：编辑器、Python 环境、基本命令、GitHub Hello World
-- 正在进行：建立正式学习仓库
-- 下一步：编写并运行 10 个小型 Python 程序
+- 已完成：编辑器、Python 环境、基本命令、GitHub Hello World、10 个小型 Python 程序
+- 正在进行：整理并合并第 1 周学习成果
+- 下一步：进入第 2 周，学习函数与条件并完成 VPD 计算程序
 
 ## 本周任务
 
@@ -42,8 +42,8 @@
 - [x] 创建 GitHub 账号
 - [x] 完成 GitHub Hello World
 - [x] 创建 `ai-learning-roadmap` 仓库
-- [ ] 编写并运行 10 个小型 Python 程序
-- [ ] 整理第一周学习成果
+- [x] 编写并运行 10 个小型 Python 程序
+- [x] 整理第一周学习成果
 
 ## 项目目录
 
