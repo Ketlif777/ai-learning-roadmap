@@ -5,32 +5,38 @@ import math
 
 def calculate_saturation_vapor_pressure(temperature_c):
     """根据空气温度计算饱和水汽压，返回值单位为 kPa。"""
-    # TODO 1：使用 README 中的 FAO-56 公式计算饱和水汽压。
-    # 提示：自然指数函数写作 math.exp(...)
-    raise NotImplementedError(
-        "请完成 calculate_saturation_vapor_pressure()"
-    )
+    e_s = 0.6108 * math.exp((17.27 * temperature_c) / (temperature_c + 237.3))
+    return e_s
 
 
 def is_valid_relative_humidity(relative_humidity):
     """相对湿度位于 0%～100% 时返回 True，否则返回 False。"""
-    # TODO 2：写一个布尔表达式并返回结果。
-    raise NotImplementedError("请完成 is_valid_relative_humidity()")
+    return 0 <= relative_humidity <= 100
 
 
 def calculate_vpd(temperature_c, relative_humidity):
     """计算 VPD，返回值单位为 kPa。"""
-    # TODO 3：先检查相对湿度；非法时抛出 ValueError。
-    # TODO 4：调用饱和水汽压函数，计算实际水汽压和 VPD。
-    raise NotImplementedError("请完成 calculate_vpd()")
+    if not is_valid_relative_humidity(relative_humidity):
+        raise ValueError("相对湿度必须在 0%～100% 之间")
+
+    e_s = calculate_saturation_vapor_pressure(temperature_c)
+    e_a = e_s * relative_humidity / 100
+    vpd = e_s - e_a
+    return vpd
 
 
 def main():
     """读取输入、调用计算函数并显示结果。"""
-    # TODO 5：读取温度和相对湿度，将输入转换为 float。
-    # TODO 6：捕获非数字输入或非法湿度，显示简洁错误信息。
-    # TODO 7：正常时把 VPD 输出到小数点后三位，单位为 kPa。
-    raise NotImplementedError("请完成 main()")
+
+    try:
+        temperature_c = float(input("请输入温度（摄氏度）："))
+        relative_humidity = float(input("请输入相对湿度（%）："))
+        vpd = calculate_vpd(temperature_c, relative_humidity)
+    except ValueError:
+        print("输入无效：请输入数字，并确保相对湿度在 0%～100% 之间。")
+        return
+
+    print(f"VPD = {vpd:.3f} kPa")
 
 
 if __name__ == "__main__":

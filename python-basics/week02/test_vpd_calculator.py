@@ -7,23 +7,23 @@ from vpd_calculator import calculate_vpd
 
 def test_typical_condition():
     """20°C、50% RH 时，VPD 应约为 1.169 kPa。"""
-    # TODO 1：调用 calculate_vpd()，再用 math.isclose() 检查结果。
-    # 提示：math.isclose(actual, 1.169, abs_tol=0.001)
-    raise NotImplementedError("请完成 test_typical_condition()")
+    actual = calculate_vpd(20, 50)
+    assert math.isclose(actual, 1.169, abs_tol=0.001)
 
 
 def test_saturated_air():
     """30°C、100% RH 时，VPD 应为 0 kPa。"""
-    # TODO 2：调用 calculate_vpd()，并断言结果接近 0。
-    raise NotImplementedError("请完成 test_saturated_air()")
+    actual = calculate_vpd(30, 100)
+    assert math.isclose(actual, 0, abs_tol=0.001)
 
 
 def test_invalid_relative_humidity():
     """相对湿度为 120% 时，calculate_vpd() 应抛出 ValueError。"""
-    # TODO 3：调用 calculate_vpd(20, 120)。
-    # 如果捕获到 ValueError，就直接 return。
-    # 如果没有捕获到，则 raise AssertionError("非法湿度没有被拒绝")。
-    raise NotImplementedError("请完成 test_invalid_relative_humidity()")
+    try:
+        calculate_vpd(20, 120)
+    except ValueError:
+        return
+    raise AssertionError("非法湿度没有被拒绝")
 
 
 def main():
