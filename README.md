@@ -57,6 +57,10 @@
 - `paper-reproduction/`：论文复现
 - `notes/`：学习笔记
 
+## 学习笔记
+
+- [第 1 周：计算机基础与 GitHub](notes/week01.md)
+
 ## 学习原则
 
 1. 每个知识点都通过代码验证。
