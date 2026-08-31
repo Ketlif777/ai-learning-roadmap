@@ -3,9 +3,8 @@
 
 def celsius_to_fahrenheit(celsius):
     """接收摄氏温度，返回对应的华氏温度。"""
-    # TODO 1：根据第 1 周的公式计算并返回华氏温度。
-    raise NotImplementedError("请完成 celsius_to_fahrenheit()")
-
+    fahrenheit = celsius * 9 / 5 + 32
+    return fahrenheit
 
 def main():
     """读取用户输入并显示换算结果。"""

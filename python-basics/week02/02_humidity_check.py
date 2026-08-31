@@ -3,10 +3,12 @@
 
 def check_relative_humidity(relative_humidity):
     """返回相对湿度检查结果。"""
-    # TODO 1：小于 0 时返回“相对湿度不能小于 0%”。
-    # TODO 2：大于 100 时返回“相对湿度不能大于 100%”。
-    # TODO 3：其余情况返回“相对湿度输入有效”。
-    raise NotImplementedError("请完成 check_relative_humidity()")
+    if relative_humidity < 0:
+        return "相对湿度不能小于 0%"
+    elif relative_humidity > 100:
+        return "相对湿度不能大于 100%"
+    else:
+        return "相对湿度输入有效"
 
 
 def main():
