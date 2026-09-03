@@ -20,7 +20,16 @@ def build_qc_summary(values):
     # TODO 4：严格大于 EXTREME_THRESHOLD_MM 的数值归入 extreme。
     # TODO 5：其余数值归入 normal。
     # 提示：分类顺序会影响边界值最终进入哪个分支。
-    raise NotImplementedError("请完成 build_qc_summary()")
+    for value in values:
+        if value is None:
+            summary["missing"] += 1
+        elif value < 0:
+            summary["negative"] += 1
+        elif value > EXTREME_THRESHOLD_MM:
+            summary["extreme"] += 1
+        else:
+            summary["normal"] += 1
+    return summary
 
 
 def main():

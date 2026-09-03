@@ -157,8 +157,8 @@ CSV 文件
 ## 本周验收
 
 - [ ] 能解释 `for` 循环变量每次取得什么值。
-- [ ] `01_precipitation_loop.py` 输出与预期一致。
-- [ ] `02_qc_summary_dictionary.py` 的四类数量正确。
+- [x] `01_precipitation_loop.py` 输出与预期一致。
+- [x] `02_qc_summary_dictionary.py` 的四类数量正确。
 - [ ] `precipitation_qc.py` 能读取样例 CSV 并输出完整报告。
 - [ ] 四个自动测试全部通过。
 - [ ] 能说明极端值为什么被标记但仍计入有效统计。
