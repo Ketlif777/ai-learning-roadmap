@@ -19,14 +19,24 @@ def parse_precipitation(precipitation_text):
     """把空字符串转换为 None，其余文本转换为 float。"""
     # TODO 1：如果 precipitation_text 是空字符串，返回 None。
     # TODO 2：否则使用 float() 转换并返回数值。
-    raise NotImplementedError("请完成 parse_precipitation()")
+    if precipitation_text == "":
+        return None
+    else:
+        return float(precipitation_text)
 
 
 def classify_precipitation(value, extreme_threshold=EXTREME_THRESHOLD_MM):
     """把一个降水值分类为 missing、negative、extreme 或 normal。"""
     # TODO 3：按照 README 中的统一规则返回分类名称。
     # 注意：300 mm 属于 normal，只有严格大于阈值才属于 extreme。
-    raise NotImplementedError("请完成 classify_precipitation()")
+    if value is None:
+        return "missing"
+    elif value < 0:
+        return "negative"
+    elif value > extreme_threshold:
+        return "extreme"
+    else:
+        return "normal"
 
 
 def summarize_precipitation(records):
@@ -48,8 +58,27 @@ def summarize_precipitation(records):
     #         或 extreme_count。每条记录只能增加一个分类计数。
     # TODO 7：normal 和 extreme 都计入 valid_count 与 valid_total_mm。
     # TODO 8：循环结束后，如果存在有效记录，计算 valid_average_mm。
-    raise NotImplementedError("请完成 summarize_precipitation()")
+    for record in records:
+        precipitation_text = record["precipitation_mm"]
+        value = parse_precipitation(precipitation_text)
+        classification = classify_precipitation(value)
 
+        if classification == "normal":
+            summary["normal_count"] += 1
+            summary["valid_count"] += 1
+            summary["valid_total_mm"] += value
+        elif classification == "missing":
+            summary["missing_count"] += 1
+        elif classification == "negative":
+            summary["negative_count"] += 1
+        elif classification == "extreme":
+            summary["extreme_count"] += 1
+            summary["valid_count"] += 1
+            summary["valid_total_mm"] += value
+    if summary["valid_count"] > 0:
+        summary["valid_average_mm"] = summary["valid_total_mm"] / summary["valid_count"]
+
+    return summary
 
 def print_qc_report(summary):
     """把质控统计字典格式化为终端报告。"""
